@@ -1,0 +1,38 @@
+machine:
+  timezone: Asia/Tokyo
+  services:
+    - redis
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/.docker_cache"
+  pre:
+    - echo "GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'root'" | mysql -u root
+    - echo "CREATE DATABASE IF NOT EXISTS mastodon_development;" | mysql -u root
+    - echo "CREATE DATABASE IF NOT EXISTS mastodon_test;" | mysql -u root
+    - sudo sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+    - sudo service mysql restart
+    - sudo sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis/redis.conf
+    - sudo service redis-server restart
+    - mkdir -p ~/.docker_cache
+  override:
+    - docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+
+database:
+  override:
+    - echo 1
+
+test:
+  override:
+    - echo 1
+
+deployment:
+  production:
+    branch: nazo
+    commands:
+      - docker build -f nazo.Dockerfile --build-arg SECRET_KEY_BASE=${SECRET_KEY_BASE} --rm=false -t ${DOCKER_IMAGE_URL} .
+      - docker push ${DOCKER_IMAGE_URL}
+      - ssh -p ${DEPLOY_TARGET_PORT} ${DEPLOY_TARGET_USER}@${DEPLOY_TARGET_HOST} sudo service mastodon restart
+      - ssh -p ${DEPLOY_TARGET_PORT} ${DEPLOY_TARGET_USER}@${DEPLOY_TARGET_HOST} sudo service mastodon-sidekiq restart
+      - ssh -p ${DEPLOY_TARGET_PORT} ${DEPLOY_TARGET_USER}@${DEPLOY_TARGET_HOST} sudo service mastodon-stream restart
