@@ -24,8 +24,8 @@ ja:
     links: リンク
     other_instances: 他のインスタンス
     source_code: ソースコード
-    status_count_after: トゥート
-    status_count_before: トゥート数
+    status_count_after: ナゾる
+    status_count_before: ナゾる数
     terms: プライバシーポリシー
     user_count_after: 人
     user_count_before: ユーザー数
@@ -78,7 +78,7 @@ ja:
         report: レポート
         targeted_reports: このアカウントについてのレポート
       silence: サイレンス
-      statuses: トゥート数
+      statuses: ナゾる数
       title: アカウント
       undo_silenced: サイレンスから戻す
       undo_suspension: 停止から戻す
@@ -93,7 +93,7 @@ ja:
         create: ブロックを作成
         hint: ドメインブロックはデータベース中のアカウント項目の作成を妨げませんが、遡って自動的に指定されたモデレーションをそれらのアカウントに適用します。
         severity:
-          desc_html: "<strong>サイレンス</strong>はアカウントのトゥートをフォローしていない人から隠します。<strong>停止</strong>はそのアカウントのコンテンツ、メディア、プロフィールデータをすべて削除します。"
+          desc_html: "<strong>サイレンス</strong>はアカウントのナゾるをフォローしていない人から隠します。<strong>停止</strong>はそのアカウントのコンテンツ、メディア、プロフィールデータをすべて削除します。"
           silence: サイレンス
           suspend: 停止
         title: 新規ドメインブロック
@@ -245,8 +245,8 @@ ja:
         one: "新しい1件の通知 \U0001F418"
         other: "新しい%{count}件の通知 \U0001F418"
     favourite:
-      body: 'あなたのトゥートが %{name} さんにお気に入り登録されました:'
-      subject: "%{name} さんがあなたのトゥートをお気に入りに登録しました"
+      body: 'あなたのナゾるが %{name} さんにお気に入り登録されました:'
+      subject: "%{name} さんがあなたのナゾるをお気に入りに登録しました"
     follow:
       body: "%{name} さんにフォローされています"
       subject: "%{name} さんにフォローされています"
@@ -257,8 +257,8 @@ ja:
       body: "%{name} さんから返信がありました:"
       subject: "%{name} さんに返信されました"
     reblog:
-      body: 'あなたのトゥートが %{name} さんにブーストされました:'
-      subject: あなたのトゥートが %{name} さんにブーストされました
+      body: 'あなたのナゾるが %{name} さんにごちなぞるされました:'
+      subject: あなたのナゾるが %{name} さんにごちなぞるされました
   pagination:
     next: 次
     prev: 前
@@ -284,10 +284,10 @@ ja:
     visibilities:
       private: 非公開 - フォロワーだけに公開
       public: 公開 - 公開タイムラインに投稿する
-      unlisted: 未収載 - トゥートは公開するが、公開タイムラインには表示しない
+      unlisted: 未収載 - ナゾるは公開するが、公開タイムラインには表示しない
   stream_entries:
     click_to_show: クリックして表示
-    reblogged: ブーストされました
+    reblogged: ごちなぞるされました
     sensitive_content: 不適切なコンテンツの可能性があります
   time:
     formats:
